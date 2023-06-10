@@ -1,0 +1,146 @@
+
+  <div class="container">
+    <div class="card card-body border-dark" style="background-color: #14141f;">
+  
+    <form method="POST">
+        <h4 style="text-align: center; color: #198754;"><b>UPDATE CUSTOMER RECORD</b></h4>
+      {% csrf_token %}
+  
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div>
+                <label for="cust_id" style="color: #198754;">Id</label>
+                <input name="cust_id" class="form-control custom-form-control" id="cust_id" type="text" oninput="handleTextFieldChange(this)" required="">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div>
+                <label for="cust_name" style="color: #198754;">Name</label>
+                <input name="cust_name" class="form-control custom-form-control" id="cust_name" type="text" placeholder="Customer Name" oninput="validateName()" required="">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div>
+              <label for="cust_address" style="color: #198754;">Address</label>
+              <input name="cust_address" class="form-control custom-form-control" id="cust_address" type="text" placeholder="Address" oninput="handleTextFieldChange(this)">
+          </div>
+      </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="birthday" style="color: #198754;">Mobile</label>
+            <div class="input-group">
+                <input name="cust_mobile" class="form-control custom-form-control" placeholder="+91" id="cust_mobile" type="number" oninput="validateName()">
+            </div>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label for="cust_tele" style="color: #198754;">Telephone</label>
+          <div class="input-group">
+              <input name="cust_tele" class="form-control custom-form-control" placeholder="+91" id="cust_tele" type="number" oninput="handleTextFieldChange(this)">
+          </div>
+      </div>
+  
+      <div class="col-md-4 mb-3">
+        <label for="birthday" style="color: #198754;">Whatsapp</label>
+        <div class="input-group">
+          
+            <input name="cust_whatsapp" class="form-control custom-form-control" placeholder="+91" id="cust_whatsapp" type="text" oninput="handleTextFieldChange(this)">
+        </div>
+      </div>
+       
+    </div>
+  
+  
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="form-group">
+                <label for="cust_email" style="color: #198754;">Email</label>
+                <input name="cust_email" class="form-control custom-form-control" placeholder="Ex-yourname@gmail.com" id="cust_email" type="email" oninput="handleTextFieldChange(this)">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="form-group">
+                <label for="cust_website" style="color: #198754;">Website</label>
+                <input name="cust_website" class="form-control custom-form-control" placeholder="Ex-www.google.com" id="cust_website" type="text" oninput="handleTextFieldChange(this)">
+            </div>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <div class="form-group">
+              <label for="cust_gst" style="color: #198754;">GST NO</label>
+              <input name="cust_gst" class="form-control custom-form-control" id="cust_gst" placeholder="GST NO" type="text" oninput="handleTextFieldChange(this)">
+          </div>
+      </div>
+    </div>
+  
+  
+    <div class="row">
+        <div class="col-sm-4 mb-3">
+            <div class="form-group">
+                <label for="cust_con_per" style="color: #198754;">Contact Person</label>
+                <input name="cust_con_per" class="form-control custom-form-control" id="cust_con_per" type="text" placeholder="Contact Person" oninput="validateName()">
+            </div>
+        </div>
+  
+  
+        <div class="col-sm-4 mb-3">
+          <div class="form-group">
+              <label for="cust_country" style="color: #198754;">Country</label>
+              <input name="cust_country" class="form-control custom-form-control" id="cust_country" type="text" placeholder="Country" oninput="validateName()">
+              
+          </div>
+      </div>
+  
+      <div class="col-sm-4">
+          <div class="form-group">
+              <label for="cust_org" style="color: #198754;">Customer Organisation</label>
+              <input name="cust_org" class="form-control custom-form-control" id="cust_org" type="text" required="" oninput="validateName()">
+          </div>
+      </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-sm-4 mb-3">
+            <div class="form-group">
+                <label for="cust_city" style="color: #198754;">City</label>
+                <input name="cust_city" class="form-control custom-form-control" id="cust_city" type="text" placeholder="City" oninput="validateName()">
+            </div>
+        </div>
+  
+        <div class="col-sm-4 mb-3">
+            <div class="form-group">
+                <label for="cust_state" style="color: #198754;">State</label>
+                <input name="cust_state" class="form-control custom-form-control" id="cust_state" type="tel" placeholder="State" oninput="handleTextFieldChange(this)">
+            
+            </div>
+        </div>
+  
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="cust_pin" style="color: #198754;">PIN</label>
+                <input name="cust_pin" class="form-control custom-form-control" id="cust_pin" type="tel" placeholder="PIN" oninput="handleTextFieldChange(this)">
+            </div>
+        </div>
+  
+  
+    </div>
+  <br>
+    
+    <div class="text-center">
+      <button type="submit" class="btn btn-warning" style="width: 40%; border-radius: 10px; margin-left: 15px;">UPDATE</button>
+    </div>
+  
+  
+    
+    
+  </div>
+  <br>
+  </form>
+  </div>
+  
+
+
+
+

@@ -1,0 +1,159 @@
+{% load static %}
+<style>
+  .selectpicker{
+    background-color: aliceblue;
+  }
+</style>
+
+  
+  <div class="container">
+                
+
+    <div class="card card-body border-dark shadow-sm mb-4" style="background-color: #14141f;">
+    <br>
+    
+    
+      
+        
+        <form method="post" action="{% url 'worksheet' %}">
+          <h4 style="text-align: center; color: #198754;"><b>WORKSHEET FORM</b></h4>
+          {% csrf_token %}
+          <label for="name" style="color: #198754;">ORGANISATION:</label>
+          <select name="cust_org" id="cust_org" class="selectpicker" data-live-search="true"> 
+          {% for i in df1 %}
+          
+          <option value="{{i}}">{{i}}</option>
+      
+          {% endfor %}
+          </select> 
+          
+          <button type="submit" class="btn btn-secondary">Search</button>
+        </form>
+        <br>
+        <br>
+
+        {% if error %}
+          <p>{{ error }}</p>
+        {% else %}
+        
+        {% if customer %}
+      
+      
+        <form method="POST" action="{% url 'work_save' %}" class="uform">
+        
+          
+            {% csrf_token %}
+
+              <div class="row">
+                  <div class="col-md-4 mb-3">
+                      <div>
+                        <label for="cust_id" style="color: #198754;">Id</label>
+                      
+                        <input name="cust_id" class="form-control custom-form-control" id="cust_id" type="text" value="{{customer.cust_id}}"required="" readonly>
+                      
+                      </div>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                      <div>
+                        <label style="color: #198754;">Customer Name</label>
+                        
+                        <input name="cust_name" class="form-control custom-form-control" id="cust_name" type="text" value="{{customer.cust_name}}" required="" readonly>
+                        
+                      </div>
+                      
+                      
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <div>
+                      <label style="color: #198754;">Work ID</label>
+                      
+                      <input name="work_id" class="form-control custom-form-control" id="work_id" type="text">
+                      
+                    </div>
+                    
+                    
+                </div>
+
+                  
+                  
+
+              </div>
+
+              <div class="row">
+                
+              <div class="col-md-4 mb-3">
+                <div>
+                    <label for="worktype" style="color: #198754;">Work Type</label>
+                    <input name="worktype" class="form-control custom-form-control" id="worktype" type="text" placeholder="Work Type" required="">
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <div>
+                    <label for="cust_org" style="color: #198754;">Organisation</label>
+                    <input name="cust_org" class="form-control custom-form-control" id="cust_org" type="text" value="{{customer.cust_org}}" required="" readonly>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <div>
+                  <label style="color: #198754;">Current Date</label>
+                  
+                  <input name="current_date" class="form-control custom-form-control" id="current_date" type="date" required="">
+                  
+                </div>
+                
+                
+            </div>
+              
+
+            </div>
+
+
+              <div class="row">
+                
+                  <div class="col-md-4 mb-3">
+                      <label for="workprogress" style="color: #198754;">Work Progress</label>
+                      <input name="workprogress" class="form-control custom-form-control" id="workprogress" type="text" required="">
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <label for="remarks" style="color: #198754;">Remarks</label>
+                    <input name="remarks" class="form-control custom-form-control" id="remarks" type="text" required="">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label for="project_id" style="color: #198754;">Project ID</label>
+                  <input name="project_id" class="form-control custom-form-control" id="project_id" type="text" required="">
+              </div>
+                
+              </div><br>
+
+              
+              <div class="text-center">
+                <button type="submit" class="btn btn-success" style="width: 40%; border-radius: 10px; margin-left: 15px;">Save</button>
+
+              </div>
+              
+              
+              
+            </div>
+            <br>
+          
+          </form>
+
+          
+              {% endif %}
+          
+      {% endif %}
+
+
+</div> 
+</div>
+  
+</body>
+</html>
+
+

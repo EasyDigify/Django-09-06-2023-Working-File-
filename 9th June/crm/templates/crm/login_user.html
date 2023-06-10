@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .container{
+            margin-top: 120px;
+            margin-left: 550px;
+        }
+
+        .image{
+  width: 15%; height: 15%;
+  margin-top: 0px;
+  
+}
+
+    </style>
+</head>
+<body>
+    
+<br/>
+    <div class="container">
+        
+          <img class="image" src="{% static 'img/avator.png' %}">
+        
+        
+        <h3>Please Login In</h3>
+
+        <form action="" method=POST>
+			{% csrf_token %}
+                
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter a valid username">
+                
+            </div><br>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div><br>
+
+
+            <input type="submit" value="Login" class="btn btn-secondary">
+
+            
+
+            <div class="form-btn-link" style="margin-left: 15px; display: inline-block;">
+                <a class="dialog-link" href="{% url 'register' %}" rel="nofollow">Don't have an account?</a>
+            </div>
+
+
+
+		</form>
+		
+
+    </div>
+    
+</body>
+</html>
+	

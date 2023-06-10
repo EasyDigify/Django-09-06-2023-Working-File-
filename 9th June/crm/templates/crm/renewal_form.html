@@ -1,0 +1,126 @@
+{% load static %}
+<style>
+  .selectpicker{
+    background-color: aliceblue;
+  }
+</style>
+
+<body>
+  <div class="container">
+                
+
+    <div class="card card-body border-dark shadow-sm mb-4" style="background-color: #14141f;">
+    <br>
+
+
+  <form method="post" action="{% url 'renewals' %}">
+    <h4 style="text-align: center; color: #198754;"><b>RENEWAL FORM</b></h4>
+    {% csrf_token %}
+    <label for="name" style="color: #198754;">ORGANISATION:</label>
+    <select name="cust_org" id="cust_org" class="selectpicker" data-live-search="true"> 
+    {% for i in df1 %}
+
+    <option value="{{i}}">{{i}}</option>
+
+    {% endfor %}
+    </select> 
+    
+    <button type="submit" class="btn btn-secondary">Search</button>
+  </form>
+  <br>
+  <br>
+
+  {% if error %}
+  <p>{{ error }}</p>
+  {% else %}
+  
+  {% if customer %}
+
+    <form method="POST" action="{% url 'renew_save' %}">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+            <div>
+                <label for="cust_id" style="color: #198754;">Customer ID</label>
+                <input name="cust_id" class="form-control custom-form-control" id="cust_id" type="text" value="{{customer.cust_id}}" required="" readonly>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div>
+                <label for="cust_name" style="color: #198754;">Customer Name</label>
+                <input name="cust_name" class="form-control custom-form-control" id="cust_name" type="text" value="{{customer.cust_name}}" required="" readonly>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div>
+              <label for="cust_org" style="color: #198754;">Customer Organisation</label>
+              <input name="cust_org" class="form-control custom-form-control" id="cust_org" type="text" value="{{customer.cust_org}}" required="" readonly>
+          </div>
+      </div>
+      
+    </div>
+      
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div>
+                    <label for="product" style="color: #198754;">Product</label>
+                    <input name="product" class="form-control custom-form-control" id="product" type="text" required="">
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div>
+                    <label for="rdc" style="color: #198754;">Renewal Date(client)</label>
+                    <input name="rdc" class="form-control custom-form-control" id="rdc" type="date" placeholder="Customer Name" required="">
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div>
+                  <label for="rde" style="color: #198754;">Renewal Date(EasyDigify)</label>
+                  <input name="rde" class="form-control custom-form-control" id="rde" type="date" placeholder="Customer Name" required="">
+              </div>
+          </div>
+          
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+              <div>
+                  <label for="remark" style="color: #198754;">Remark</label>
+                  <input name="remark" class="form-control custom-form-control" id="remark" type="text" required="">
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <div>
+                  <label for="status" style="color: #198754;">Status</label>
+                  <input name="status" class="form-control custom-form-control" id="status" type="text" required="">
+              </div>
+          </div>
+        
+      </div>
+
+
+        
+
+        
+        <div class="text-center">
+          <button type="submit" class="btn btn-success" style="width: 40%; border-radius: 10px; margin-left: 15px;">Save</button>
+        </div>
+        
+        
+      </div>
+      <br>
+    
+    </form>
+
+    
+        {% endif %}
+            
+    {% endif %}
+
+  </div> 
+  </div>
+    
+</body>
+</html>

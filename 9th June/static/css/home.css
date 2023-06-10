@@ -1,0 +1,25 @@
+
+.sidebar-sticky {
+  height: 92%; 
+  width: 260px; 
+  z-index: 1; 
+  background-color:#232f3e;
+  position: fixed;
+  overflow: scroll;
+  }
+  
+  .image{
+  width: 45%; height: 20%;
+  margin-top: 40px;
+  margin-left: 30px;
+  margin: auto;
+  display: block;
+  font: 1em sans-serif;
+  }
+  
+  .left-content{
+  margin-left: 265px;
+  margin-right: 10px;
+
+  }
+  

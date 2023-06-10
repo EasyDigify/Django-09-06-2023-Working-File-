@@ -1,0 +1,301 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+    
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+ <div class="container">
+    <div class="card card-body border-dark" style="background-color: #14141f;">
+        <br>
+        
+        
+      
+      {% if success %}
+      <div class="alert alert-success">Customer uploaded successfully!</div>
+      {% endif %}
+      
+      {% if error_message %}
+      <div class="alert alert-danger">{{error_message}}</div>
+      {% endif %}
+      
+      
+      
+      
+      
+        <form method="POST">
+            <h4 style="text-align: center; color: #198754;"><b>CUSTOMER FORM</b></h4>
+            {% csrf_token %}
+      
+          <div class="row">
+              <div class="col-md-4 mb-3">
+                  <div>
+                      <label for="cust_id" style="color: #198754;">ID</label>
+                      <input name="cust_id" class="form-control custom-form-control" id="cust_id" placeholder="Id" value="{{final_id}}" type="text" oninput="handleTextFieldChange(this)" required="">
+                  </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                  <div>
+                      <label for="cust_name" style="color: #198754;">NAME</label>
+                      <input name="cust_name" class="form-control custom-form-control" id="cust_name" type="text" placeholder="Name" oninput="validateName()" required="">
+                  </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div>
+                    <label for="cust_address" style="color: #198754;">ADDRESS</label>
+                    <input name="cust_address" class="form-control custom-form-control" id="cust_address" type="text" placeholder="Address" oninput="handleTextFieldChange(this)">
+                </div>
+            </div>
+          </div>
+      
+          <div class="row">
+              <div class="col-md-4 mb-3">
+                  <label for="birthday" style="color: #198754;">MOBILE</label>
+                  <div class="input-group">
+                      <input name="cust_mobile" class="form-control custom-form-control" placeholder="+91" id="cust_mobile" type="number" oninput="validateName()">
+                  </div>
+              </div>
+      
+              <div class="col-md-4 mb-3">
+                <label for="cust_tele" style="color: #198754;">TELEPHONE</label>
+                <div class="input-group">
+                    <input name="cust_tele" class="form-control custom-form-control" placeholder="+91" id="cust_tele" type="number" oninput="handleTextFieldChange(this)">
+                </div>
+            </div>
+      
+            <div class="col-md-4 mb-3">
+              <label for="birthday" style="color: #198754;">WHATSAPP</label>
+              <div class="input-group">
+                
+                  <input name="cust_whatsapp" class="form-control custom-form-control" placeholder="+91" id="cust_whatsapp" type="text" oninput="handleTextFieldChange(this)">
+              </div>
+            </div>
+             
+          </div>
+      
+      
+          <div class="row">
+              <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                      <label for="cust_email" style="color: #198754;">EMAIL</label>
+                      <input name="cust_email" class="form-control custom-form-control" placeholder="Ex-yourname@gmail.com" id="cust_email" type="email" oninput="handleTextFieldChange(this)">
+                  </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                      <label for="cust_website" style="color: #198754;">WEBSITE</label>
+                      <input name="cust_website" class="form-control custom-form-control" placeholder="Ex-www.google.com" id="cust_website" type="text" oninput="handleTextFieldChange(this)">
+                  </div>
+              </div>
+      
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                    <label for="cust_gst" style="color: #198754;">GST NO</label>
+                    <input name="cust_gst" class="form-control custom-form-control" id="cust_gst" placeholder="GST NO" type="text" oninput="handleTextFieldChange(this)">
+                </div>
+            </div>
+          </div>
+      
+      
+          <div class="row">
+              <div class="col-sm-4 mb-3">
+                  <div class="form-group">
+                      <label for="cust_con_per" style="color: #198754;">CONTACT PERSON</label>
+                      <input name="cust_con_per" class="form-control custom-form-control" id="cust_con_per" type="text" placeholder="Contact Person" oninput="validateName()">
+                  </div>
+              </div>
+      
+      
+              <div class="col-sm-4 mb-3">
+                <div class="form-group">
+                    <label for="cust_country" style="color: #198754;">COUNTRY</label>
+                    <select name="cust_country" class="form-control">
+                      {% for country in country_list %}
+                          <option value="{{ country }}">{{ country }}</option>
+                      {% endfor %}
+                     </select>
+                    
+                </div>
+            </div>
+      
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="cust_org" style="color: #198754;">ORGANISATION</label>
+                    <input name="cust_org" class="form-control custom-form-control" id="cust_org" placeholder="Organisation" type="text" required="" oninput="validateName()">
+                </div>
+            </div>
+              
+          </div>
+          <div class="row">
+              <div class="col-sm-4 mb-3">
+                  <div class="form-group">
+                      <label for="cust_city" style="color: #198754;">CITY</label>
+                      <input name="cust_city" class="form-control custom-form-control" id="cust_city" type="text" placeholder="City" oninput="validateName()">
+                  </div>
+              </div>
+      
+              <div class="col-sm-4 mb-3">
+                  <div class="form-group">
+                      <label for="cust_state" style="color: #198754;">STATE</label>
+                      <select name="cust_state" class="form-control">
+                          {% for state in state_list %}
+                              <option value="{{ state }}">{{ state }}</option>
+                          {% endfor %}
+                      </select>
+                  
+                  </div>
+              </div>
+      
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label for="cust_pin" style="color: #198754;">PIN</label>
+                      <input name="cust_pin" class="form-control custom-form-control" id="cust_pin" type="tel" placeholder="PIN" oninput="handleTextFieldChange(this)">
+                  </div>
+              </div>
+      
+      
+          </div>
+      
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-success" style="width: 40%; border-radius: 10px; margin-left: 15px;">SUBMIT</button>
+          </div>
+        
+      
+          
+          
+        </div>
+        <br>
+      
+      
+      
+      </form>
+      
+      
+      </div>
+
+ </div>
+    
+    
+    
+    
+    <script>
+        function validateName() {
+            var custNameInput = document.getElementById("cust_name");
+            var custName = custNameInput.value.trim();
+    
+            var custContactInput = document.getElementById("cust_con_per");
+            var custContact = custContactInput.value.trim();
+    
+            var custCountryInput = document.getElementById("cust_country");
+            var custCountry = custCountryInput.value;
+    
+            var custOrgInput = document.getElementById("cust_org");
+            var custOrg = custOrgInput.value.trim();
+    
+            var custCityInput = document.getElementById("cust_city");
+            var custCity = custCityInput.value;
+    
+            var custstateInput = document.getElementById("cust_state");
+            var custState = custstateInput.value;
+    
+            var custMobileInput = document.getElementById("cust_mobile");
+            var custMobile = custMobileInput.value;
+    
+            var custEmailInput = document.getElementById("cust_email");
+            var custEmail = custEmailInput.value.trim();
+    
+            var custWebsiteInput = document.getElementById("cust_website");
+            var custWebsite = custWebsiteInput.value.trim();
+    
+            var gstInput = document.getElementById("cust_gst");
+            var gst = gstInput.value.trim();
+    
+            // Check if custName contains only alphabets
+            var regex = /^[a-zA-Z]+$/;   
+            if (custName !== '' && !regex.test(custName)) {
+                custNameInput.setCustomValidity("Customer name should only contain alphabets.");
+            } else {
+                custNameInput.setCustomValidity("");
+            }
+    
+            if (custContact !== '' && !regex.test(custContact)) {
+                custContactInput.setCustomValidity("Customer contact should only contain alphabets.");
+            } else {
+                custContactInput.setCustomValidity("");
+            }
+    
+            if (custCountry !== '' && !regex.test(custCountry)) {
+                custCountryInput.setCustomValidity("Country should only contain alphabets.");
+            } else {
+                custCountryInput.setCustomValidity("");
+            }
+    
+            if (custOrg !== '' && !regex.test(custOrg)) {
+                custOrgInput.setCustomValidity("Customer Organisation should only contain alphabets.");
+            } else {
+                custOrgInput.setCustomValidity("");
+            }
+    
+            if (custCity !== '' && !regex.test(custCity)) {
+                custCityInput.setCustomValidity("City should only contain alphabets.");
+            } else {
+                custCityInput.setCustomValidity("");
+            }
+    
+            if (custstate !== '' && !regex.test(custState)) {
+                custstateInput.setCustomValidity("State should only contain alphabets.");
+            } else {
+                custstateInput.setCustomValidity("");
+            }
+            var phoneRegex = /^\d{10}$/;
+            if (custMobile !== '' && !phoneRegex.test(custMobile) || custMobile.length == 10) {
+                custMobileInput.setCustomValidity("Invalid Mobile Number!");
+                } else {
+                    custMobileInput.setCustomValidity("");
+                }
+    
+            var emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            if (custEmail !== '' && !emailRegex.test(custEmail)) {
+                custEmailInput.setCustomValidity("Invalid email address!");
+            } else {
+                custEmailInput.setCustomValidity("");
+            }
+    
+            // Check if custWebsite is a valid URL
+            var websiteRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+            if (custWebsite !== '' && !websiteRegex.test(custWebsite)) {
+                custWebsiteInput.setCustomValidity("Invalid website URL!");
+            } else {
+                custWebsiteInput.setCustomValidity("");
+            }
+    
+            // GST number validation regex
+            var gstRegex = /^\d{2}[A-Z]{5}\d{4}[A-Z]{1}\d[Z]{1}[A-Z\d]{1}$/;
+            if (gst !== '' && !gstRegex.test(gst)) {
+                gstInput.setCustomValidity("Invalid GST number! Format: 00AAAAA1111A1Z1");
+            } else {
+                gstInput.setCustomValidity("");
+            }
+        }
+    </script>
+    
+    
+    
+    <script>
+        function handleTextFieldChange(input) {
+            if (input.value !== '') {
+                input.classList.add('filled-textfield');
+            } else {
+                input.classList.remove('filled-textfield');
+            }
+        }
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

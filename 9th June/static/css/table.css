@@ -1,0 +1,7 @@
+   
+  .table-wrapper{
+    margin-top: 10px;
+    width: 100%;    
+    overflow-x: scroll;
+    overflow-y: scroll;
+}

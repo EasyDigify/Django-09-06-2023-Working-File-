@@ -1,0 +1,79 @@
+
+<form method="POST" action="{% url 'renewal_update' %}">
+    <h4 style="text-align: center; color: #198754;"><b>UPDATE RENEWAL RECORD</b></h4>
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+          <div>
+              <label for="cust_id" style="color: #198754;">Customer ID</label>
+              <input name="cust_id" class="form-control custom-form-control" id="cust_id" type="text" required="">
+          </div>
+      </div>
+      <div class="col-md-4 mb-3">
+          <div>
+              <label for="cust_name" style="color: #198754;">Customer Name</label>
+              <input name="cust_name" class="form-control custom-form-control" id="cust_name" type="text" required="">
+          </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div>
+            <label for="cust_org" style="color: #198754;">Customer Organisation</label>
+            <input name="cust_org" class="form-control custom-form-control" id="cust_org" type="text" required="">
+        </div>
+    </div>
+    
+  </div>
+    
+
+      <div class="row">
+          <div class="col-md-4 mb-3">
+              <div>
+                  <label for="product" style="color: #198754;">Product</label>
+                  <input name="product" class="form-control custom-form-control" id="product" type="text" required="">
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <div>
+                  <label for="rdc" style="color: #198754;">Renewal Date(client)</label>
+                  <input name="rdc" class="form-control custom-form-control" id="rdc" type="date" placeholder="Customer Name" required="">
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div>
+                <label for="rde" style="color: #198754;">Renewal Date(EasyDigify)</label>
+                <input name="rde" class="form-control custom-form-control" id="rde" type="date" placeholder="Customer Name" required="">
+            </div>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+            <div>
+                <label for="remark" style="color: #198754;">Remark</label>
+                <input name="remark" class="form-control custom-form-control" id="remark" type="text" required="">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div>
+                <label for="status" style="color: #198754;">Status</label>
+                <input name="status" class="form-control custom-form-control" id="status" type="text" required="">
+            </div>
+        </div>
+      
+    </div>
+<br>
+
+      
+
+      
+      <div class="text-center">
+        <button type="submit" class="btn btn-warning" style="width: 40%; border-radius: 10px; margin-left: 15px;">UPDATE</button>
+      </div>
+      
+      
+    </div>
+    <br>
+  
+  </form>
